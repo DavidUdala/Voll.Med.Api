@@ -1,7 +1,23 @@
 package med.voll.api.dto.medico;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.*;
+
 import med.voll.api.dto.endereco.DadosEndereco;
 import med.voll.api.enums.Especialidade;
-public record DadosCadastroMedico(String nome, String email, String crm, Especialidade especialidade, DadosEndereco endereco) {
+public record DadosCadastroMedico(
+    @NotBlank
+    String nome, 
+    @Email
+    @NotBlank
+    String email, 
+    @NotBlank
+    @Pattern(regexp = "\\d{4,6}")
+    String crm, 
+    @NotNull
+    Especialidade especialidade, 
+    @NotNull
+    @Valid
+    DadosEndereco endereco) {
     
 }
