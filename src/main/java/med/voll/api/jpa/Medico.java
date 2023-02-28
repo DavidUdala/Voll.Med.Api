@@ -23,6 +23,7 @@ public class Medico {
         this.email = dados.email();
         this.endereco = new Endereco(dados.endereco());
         this.especialidade = dados.especialidade();
+        this.telefone = dados.telefone();
     }
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,7 @@ public class Medico {
     private String nome;
     private String email;
     private String crm;
+    private String telefone;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
