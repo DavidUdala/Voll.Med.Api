@@ -25,4 +25,24 @@ public class Endereco {
     private String complemento;
     private String cidade;
     private String uf;
+
+    public void atualizar(DadosEndereco dados) {
+        if (dados.cep() != null) {
+            this.cep = dados.cep();            
+        }
+        if (dados.cidade() != null)  {
+            this.cidade = dados.cidade();            
+        }
+        if (dados.complemento() != null) {            
+            this.complemento = dados.complemento();        }
+        if (dados.logradouro() != null) {
+            this.logradouro = dados.logradouro();            
+        }
+        if (dados.numero() != null) {
+            this.numero = dados.numero();            
+        }
+        if (dados.uf() != null) {
+            this.uf = dados.uf();            
+        }
+    }
 }

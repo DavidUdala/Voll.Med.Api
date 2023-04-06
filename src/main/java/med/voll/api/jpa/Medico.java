@@ -1,10 +1,12 @@
 package med.voll.api.jpa;
 
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.dto.medico.DadosAtualizaMedico;
 import med.voll.api.dto.medico.DadosCadastroMedico;
 import med.voll.api.enums.Especialidade;
 
@@ -32,10 +34,27 @@ public class Medico {
     private String email;
     private String crm;
     private String telefone;
+    private Boolean ativo;
 
     @Enumerated(EnumType.STRING)
     private Especialidade especialidade;
 
     @Embedded
     private Endereco endereco;
+
+    public void atualizarDados(@Valid DadosAtualizaMedico dados) {
+        if(dados.nome() != null){    
+            this.nome = dados.nome();
+        }
+        if(dados.telefone() != null){
+            this.telefone = dados.telefone();
+        }
+        if(dados.endereco() != null){
+            this.endereco.atualizar(dados.endereco());
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
+    }
 }
